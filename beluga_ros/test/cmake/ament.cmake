@@ -15,7 +15,7 @@
 find_package(ament_cmake_gmock REQUIRED)
 
 ament_add_gmock(test_amcl test_amcl.cpp)
-target_compile_options(test_amcl PRIVATE -Wno-deprecated-copy)
+target_compile_options(test_amcl PRIVATE -Wno-deprecated-copy -Wno-sign-compare)
 target_link_libraries(test_amcl beluga_ros)
 
 ament_add_gmock(test_messages test_messages.cpp)
@@ -35,5 +35,5 @@ target_compile_options(test_laser_scan PRIVATE -Wno-deprecated-copy)
 target_link_libraries(test_laser_scan beluga_ros)
 
 ament_add_gmock(test_particle_cloud test_particle_cloud.cpp)
-target_compile_options(test_particle_cloud PRIVATE -Wno-deprecated-copy)
+target_compile_options(test_particle_cloud PRIVATE -Wno-deprecated-copy -Wno-sign-compare)
 target_link_libraries(test_particle_cloud beluga_ros)
