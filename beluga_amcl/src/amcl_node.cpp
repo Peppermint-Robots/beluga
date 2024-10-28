@@ -468,10 +468,10 @@ void AmclNode::laser_callback(sensor_msgs::msg::LaserScan::ConstSharedPtr laser_
     last_known_odom_transform_in_map_ = base_pose_in_map * base_pose_in_odom.inverse();
     last_known_estimate_ = new_estimate;
 
-    RCLCPP_INFO(
-        get_logger(), "Particle filter update iteration stats: %ld particles %ld points - %.3fms",
-        particle_filter_->particles().size(), laser_scan->ranges.size(),
-        std::chrono::duration<double, std::milli>(update_duration).count());
+    // RCLCPP_INFO(
+    //     get_logger(), "Particle filter update iteration stats: %ld particles %ld points - %.3fms",
+    //     particle_filter_->particles().size(), laser_scan->ranges.size(),
+    //     std::chrono::duration<double, std::milli>(update_duration).count());
   }
 
   if (!last_known_estimate_.has_value()) {
