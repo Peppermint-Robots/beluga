@@ -407,7 +407,9 @@ BaseAMCLNode::CallbackReturn BaseAMCLNode::on_configure(const rclcpp_lifecycle::
   particle_cloud_pub_ = create_publisher<geometry_msgs::msg::PoseArray>("particle_cloud", rclcpp::SensorDataQoS());
   particle_markers_pub_ =
       create_publisher<visualization_msgs::msg::MarkerArray>("particle_markers", rclcpp::SystemDefaultsQoS());
-  pose_pub_ = create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("pose", rclcpp::SystemDefaultsQoS());
+
+  auto qos = rclcpp::QoS(5).reliable().transient_local();
+  pose_pub_ = create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("pose", qos);
   do_configure(state);
   return CallbackReturn::SUCCESS;
 };
